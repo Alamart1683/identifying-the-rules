@@ -32,6 +32,11 @@ while i < len(trans_values):
 print("\n Очищенные данные:")
 print(ready_trans)  
 
-freqItemSet, rules = apriori(ready_trans, minSup=0.5, minConf=0.5)
-print("\n Выявленные правила (apriori):")
+freqItemSet, rules = apriori(ready_trans, minSup=0.5, minConf=0.6)
+print("\n Выявленные правила (apriori) при минимальной достоверности 60%:")
 print('\n'.join(str(value) for value in rules))
+
+freqItemSet, rules = apriori(ready_trans, minSup=0.5, minConf=0.8)
+print("\n Выявленные правила (apriori) при минимальной достоверности 80%:")
+print('\n'.join(str(value) for value in rules))
+

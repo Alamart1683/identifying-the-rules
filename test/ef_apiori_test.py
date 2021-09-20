@@ -32,6 +32,10 @@ while i < len(trans_values):
 print("\n Очищенные данные:")
 print(ready_trans)
 
-itemsets, rules = apriori(ready_trans, min_support=0.5, min_confidence=0.5)
-print("\n Выявленные правила (efficient apriori):")
+itemsets, rules = apriori(ready_trans, min_support=0.5, min_confidence=0.6)
+print("\n Выявленные правила (efficient apriori) при минимальной достоверности 60%:")
+print('\n'.join(str(value) for value in rules))
+
+itemsets, rules = apriori(ready_trans, min_support=0.5, min_confidence=0.8)
+print("\n Выявленные правила (efficient apriori) при минимальной достоверности 80%:")
 print('\n'.join(str(value) for value in rules))

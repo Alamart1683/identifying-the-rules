@@ -23,13 +23,18 @@ while True:
         # print(curr_tran)
         curr_tran = []
         prev_tran_index = curr_tran_index
-    curr_tran.append(split_line[3].replace('\n', ''))
+    if split_line[3].replace('\n', '') != "NONE":
+        curr_tran.append(split_line[3].replace('\n', ''))
 
 ready_trans.append(curr_tran)
 raw_data.close()
 
 # print(ready_trans)
 
-freqItemSet, rules = apriori(ready_trans, minSup=0.03, minConf=0.03)
-print("\n Выявленные правила (apriori):")
+freqItemSet, rules = apriori(ready_trans, minSup=0.005, minConf=0.6)
+print("\n Выявленные правила (apriori) для минимальной достоверности 60%:")
+print('\n'.join(str(value) for value in rules))
+
+freqItemSet, rules = apriori(ready_trans, minSup=0.005, minConf=0.8)
+print("\n Выявленные правила (apriori) для минимальной достоверности 80%:")
 print('\n'.join(str(value) for value in rules))

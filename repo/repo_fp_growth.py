@@ -23,13 +23,19 @@ while True:
         # print(curr_tran)
         curr_tran = []
         prev_tran_index = curr_tran_index
-    curr_tran.append(split_line[3].replace('\n', ''))
+    if split_line[3].replace('\n', '') != "NONE":
+        curr_tran.append(split_line[3].replace('\n', ''))
 
 ready_trans.append(curr_tran)
 raw_data.close()
 
 # print(ready_trans)
 
-itemsets, rules = fpgrowth(ready_trans, 0.03, 0.03)
-print("\n Выявленные правила (fp-growth):")
+itemsets, rules = fpgrowth(ready_trans, 0.005, 0.6)
+print("\n Выявленные правила (fp-growth) при минимальной достоверности 60%:")
+print('\n'.join(str(value) for value in rules))
+
+
+itemsets, rules = fpgrowth(ready_trans, 0.005, 0.8)
+print("\n Выявленные правила (fp-growth) при минимальной достоверности 80%:")
 print('\n'.join(str(value) for value in rules))

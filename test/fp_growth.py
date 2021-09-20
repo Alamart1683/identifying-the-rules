@@ -32,6 +32,10 @@ while i < len(trans_values):
 print("\n Очищенные данные:")
 print(ready_trans)  
 
-freqItemSet, rules = fpgrowth(ready_trans, 0.5, 0.5)
-print("\n Выявленные правила (fp-growth):")
+freqItemSet, rules = fpgrowth(ready_trans, 0.5, 0.6)
+print("\n Выявленные правила (fp-growth) при минимальной достоверности 60%:")
+print('\n'.join(str(value) for value in rules))
+
+freqItemSet, rules = fpgrowth(ready_trans, 0.5, 0.8)
+print("\n Выявленные правила (fp-growth) при минимальной достоверности 80%:")
 print('\n'.join(str(value) for value in rules))
