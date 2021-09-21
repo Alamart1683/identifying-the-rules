@@ -29,6 +29,15 @@ while True:
 ready_trans.append(curr_tran)
 raw_data.close()
 
+"""
+count = 0
+for tran in ready_trans:
+    if tran.__contains__("Sandwich") and tran.__contains__("Cake") and tran.__contains__("Coffee"):
+        count += 1
+sup = float(count / len(ready_trans))
+print("\n Поддержка:", sup)
+"""
+
 # print(ready_trans)
 
 itemsets, rules = fpgrowth(ready_trans, 0.005, 0.6)
@@ -39,3 +48,4 @@ print('\n'.join(str(value) for value in rules))
 itemsets, rules = fpgrowth(ready_trans, 0.005, 0.8)
 print("\n Выявленные правила (fp-growth) при минимальной достоверности 80%:")
 print('\n'.join(str(value) for value in rules))
+
