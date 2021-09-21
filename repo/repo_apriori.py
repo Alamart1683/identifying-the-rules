@@ -1,4 +1,5 @@
 from apriori_python import apriori
+import time
 
 # Получим датасет
 raw_data = open("BreadBasket_DMS.csv", "r")
@@ -30,11 +31,14 @@ ready_trans.append(curr_tran)
 raw_data.close()
 
 # print(ready_trans)
-
+t0 = time.perf_counter()
 freqItemSet, rules = apriori(ready_trans, minSup=0.005, minConf=0.6)
 print("\n Выявленные правила (apriori) для минимальной достоверности 60%:")
 print('\n'.join(str(value) for value in rules))
+t1 = time.perf_counter() - t0
 
 freqItemSet, rules = apriori(ready_trans, minSup=0.005, minConf=0.8)
 print("\n Выявленные правила (apriori) для минимальной достоверности 80%:")
 print('\n'.join(str(value) for value in rules))
+
+print("\n Алгоритм apriori выполнился за ", t1, "секунд")
